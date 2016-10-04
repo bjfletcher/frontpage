@@ -2,8 +2,14 @@ class TopSection extends HTMLElement {
 
   connectedCallback() {
 		// fetch here
-		const items = [{ title: 'abc' }, { title: 'def' }, { title: 'ghi' }, { title: 'jkl' }].map(attrs);
+		const items = [
+			{ title: 'Dog likes cat' },
+			{ title: 'Cat likes dog' },
+			{ title: 'People like dog' },
+			{ title: 'People like cat' }
+		].map(attrs);
 		this.items = new Promise((resolve, reject) => resolve(items));
+
 		this.items.then(items => {
 			this.innerHTML = `
 				<div class="o-grid-container">
@@ -13,11 +19,11 @@ class TopSection extends HTMLElement {
 							<x-card is="lead-story" ${items[0]}></x-card>
 							<div class="o-grid-row">
 								<div data-o-grid-colspan="12 L6">
-									${items.slice(0, 4).map(item => `<x-card ${item}></x-card>`)}
+									${items.slice(0, 4).map(item => `<x-card ${item}></x-card>`).join('')}
 								</div>
 								<div data-o-grid-colspan="12 L6">
 									<h3>Opinion & Analysis</h3>
-									${items.slice(0, 4).map(item => `<x-card is="opinion" ${item}></x-card>`)}
+									${items.slice(0, 4).map(item => `<x-card is="opinion" ${item}></x-card>`).join('')}
 								</div>
 							</div>
 						</div>
