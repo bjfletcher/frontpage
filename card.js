@@ -1,13 +1,24 @@
 class Card extends HTMLElement {
 
   connectedCallback() {
-		console.log(this.getAttribute('is'));
 		switch (this.getAttribute('is')) {
+			case 'lead-story':
+				this.innerHTML = `<div>
+					<h4>${this.dataset.title}</h4>
+					<p>This is a lead story. Show the big image, related links and everything.</p>
+				</div>`;
+				break;
 			case 'opinion':
-				this.innerHTML = `option ${this.dataset.title} !!`;
+				this.innerHTML = `<div>
+					<h4>${this.dataset.title}</h4>
+					<p>This is an opinion card</p>
+				</div>`;
 				break;
 			default:
-				this.innerHTML = `${this.dataset.title} !!`;
+				this.innerHTML = `<div>
+					<h4>${this.dataset.title}</h4>
+					<p>This is a default card</p>
+				</div>`;
 		}
   }
 
